@@ -18,6 +18,7 @@
   "homepage": "https://github.com/kuo22/meme-squad#readme",
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "jquery": "^3.3.1"
+    "jquery": "^3.3.1",
+    "mapbox-gl": "^0.44.1"
   }
 }
