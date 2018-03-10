@@ -1,0 +1,22 @@
+body {
+  background: url('../images/map-background-beige.jpg');
+}
+
+#main {
+  font-family: 'Menlo', 'Arial', 'Calibri';
+}
+
+#map-container {
+  width: 92.5%;
+  margin: auto;
+  background-color: white;
+}
+
+#main-header {
+  padding: 2%;
+  color: white;
+}
+
+#map-content {
+  height: 100vh;
+}
