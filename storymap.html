@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>Meme Squad Storymap</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+    <link rel='stylesheet' href='node_modules/mapbox-gl/dist/mapbox-gl.css'>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="styles/storymap.css">
+
+  </head>
+  <body>
+    <div id='main'>
+      <div id="main-container">
+        <h1 id="main-header">Meme Squad: Storymap</h1>
+        <div id="map-container">
+          <div id="tabs">
+            <ul class="nav nav-tabs">
+              <li id ='tab1' class="active"><a href="#tab1">Map 1</a></li>
+              <li id='tab2'><a href="#tab2">Map 2</a></li>
+              <li id='tab3'><a href="#tab3">Map 3</a></li>
+            </ul>
+          </div>
+          <div id="map-content"></div>
+        </div>
+      </div>
+    </div>
+
+    <!--jQuery-->
+    <script src='node_modules/jquery/dist/jquery.min.js'></script>
+
+    <!--Mapbox.js-->
+    <script src='node_modules/mapbox-gl/dist/mapbox-gl.js'></script> 
+
+    <!--Bootstrap.js-->
+    <script src='node_modules/bootstrap/dist/js/bootstrap.min.js'></script>
+
+    <!--My script-->
+    <script src='scripts/storymap.js'></script>
+  </body>
+</html>
