@@ -82,7 +82,7 @@ map.on('load', function() {
       ]
     },
   }
-}, 'us-shootings');
+});
 
   map.addLayer({
     id: 'tweets-point',
@@ -123,7 +123,7 @@ map.on('load', function() {
         ]
       }
     }
-  }, 'us-shootings');
+  });
 
   map.on('mousemove', 'tweets-point', function(e) {
   new mapboxgl.Popup()
