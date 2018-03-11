@@ -55,6 +55,10 @@ map.on('load', function() {
         [15, 3]
       ]
     },
+
+    // circle blur
+    'circle-blur': 2,
+
     // assign color values be applied to points depending on their density
     'heatmap-color': [
       'interpolate',
@@ -173,10 +177,13 @@ colors.forEach(function(color) {
     var propertyID = 'fill-color';
     if (layer.value == 'background') {
       propertyID = 'background-color';
-    } else if (layer.value == 'tweets-point' || layer.value == 'tweets-heat') {
+    } else if (layer.value == 'tweets-point') {
       propertyID = 'circle-color';
     }
     map.setPaintProperty(layer.value, propertyID, color);
+    if (layer.value == 'tweets-heat') {
+      map.setPaintProperty(layer.value, 'circle-blur')
+    }
   });
   swatches.appendChild(swatch);
 });
