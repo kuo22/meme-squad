@@ -173,10 +173,8 @@ colors.forEach(function(color) {
     var propertyID = 'fill-color';
     if (layer.value == 'background') {
       propertyID = 'background-color';
-    } else if (layer.value == 'tweets-point') {
+    } else if (layer.value == 'tweets-point' || layer.value == 'tweets-heat') {
       propertyID = 'circle-color';
-    } else if (layer.value == 'tweets-heat') {
-      propertyID = 'heatmap-color';
     }
     map.setPaintProperty(layer.value, propertyID, color);
   });
