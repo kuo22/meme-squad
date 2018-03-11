@@ -82,7 +82,7 @@ map.on('load', function() {
       ]
     },
   }
-}, 'waterway-label');
+}, 'us-shootings');
 
   map.addLayer({
     id: 'tweets-point',
@@ -123,12 +123,15 @@ map.on('load', function() {
         ]
       }
     }
-  }, 'waterway-label');
+  }, 'us-shootings');
 
   map.on('mousemove', 'tweets-point', function(e) {
   new mapboxgl.Popup()
     .setLngLat(e.features[0].geometry.coordinates)
-    .setHTML('<b>DBH:</b> ' + e.features[0].properties.dbh)
+    .setHTML('<b>Name:</b> ' + e.features[0].properties.Name + 
+             e.features[0].properties.Handle + '<br>' +
+             '<b>Bio:</b> ' + e.features[0].properties.Bio + '<br>' +
+             '<b>Location:</b> ' + e.features[0].properties.Place)
     .addTo(map);
 });
 
