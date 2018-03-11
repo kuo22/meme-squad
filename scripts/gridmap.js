@@ -1,3 +1,4 @@
+// Access token for Mapbox
 const token = 'pk.eyJ1IjoieXVsb25ndGFuIiwiYSI6ImNqZTBhdzNyYzBlc20zM3F0aXp1MG43ZnYifQ.AWlxP25BBgwxpt3ar7ojag';
 
 mapboxgl.accessToken = token;
@@ -7,10 +8,12 @@ var map = new mapboxgl.Map({
   style: 'mapbox://styles/yulongtan/cjemgrhyz2c4r2qqg16aaesh4' // replace this with your style URL
 });
 
+// When the map loads, fire this callback
 map.on('load', function() {
   var intervals = ['0', '1-6', '7-13', '14-25', '25-57'];
   var colors = ['#FFF', 'hsl(0, 82%, 76%)', 'hsl(359, 76%, 52%)', 'hsl(359, 77%, 45%)', 'hsl(359, 81%, 28%)'];
 
+  // Here, we create the legend by creating and appending DOM elements
   for (i = 0; i < intervals.length; i++) {
     var interval = intervals[i];
     var color = colors[i];
@@ -28,62 +31,63 @@ map.on('load', function() {
     $item.appendTo(legend);
   }
 
+  // Here, we programmatically create a heatmap from a geojson file of tweets
   map.addSource('tweets', {
     type: 'geojson',
     data: 'data/tweets.geojson'
   });
 
   map.addLayer({
-  id: 'tweets-heat',
-  type: 'heatmap',
-  source: 'tweets',
-  maxzoom: 7,
-  paint: {
-    // increase weight as diameter breast height increases
-    'heatmap-weight': {
-      property: 'dbh',
-      type: 'exponential',
-      stops: [
-        [1, 0],
-        [62, 1]
-      ]
-    },
-    // increase intensity as zoom level increases
-    'heatmap-intensity': {
-      stops: [
-        [11, 1],
-        [15, 3]
-      ]
-    },
+    id: 'tweets-heat',
+    type: 'heatmap',
+    source: 'tweets',
+    maxzoom: 7,
+    paint: {
+      // increase weight as diameter breast height increases
+      'heatmap-weight': {
+        property: 'dbh',
+        type: 'exponential',
+        stops: [
+          [1, 0],
+          [62, 1]
+        ]
+      },
+      // increase intensity as zoom level increases
+      'heatmap-intensity': {
+        stops: [
+          [11, 1],
+          [15, 3]
+        ]
+      },
 
-    // assign color values be applied to points depending on their density
-    'heatmap-color': [
-      'interpolate',
-      ['linear'],
-      ['heatmap-density'],
-      0, 'rgba(236,222,239,0)',
-      0.2, 'rgb(208,209,230)',
-      0.4, 'rgb(166,189,219)',
-      0.6, 'rgb(103,169,207)',
-      0.8, 'rgb(28,144,153)'
-    ],
-    // increase radius as zoom increases
-    'heatmap-radius': {
-      stops: [
-        [11, 15],
-        [15, 20]
-      ]
-    },
-    // decrease opacity to transition into the circle layer
-    'heatmap-opacity': {
-      default: 1,
-      stops: [
-        [7, 1],
-        [8, 0]
-      ]
-    },
-  }
-});
+      // assign color values be applied to points depending on their density
+      'heatmap-color': [
+        'interpolate',
+        ['linear'],
+        ['heatmap-density'],
+        0, 'rgba(236,222,239,0)',
+        0.2, 'rgb(208,209,230)',
+        0.4, 'rgb(166,189,219)',
+        0.6, 'rgb(103,169,207)',
+        0.8, 'rgb(28,144,153)'
+      ],
+      // increase radius as zoom increases
+      'heatmap-radius': {
+        stops: [
+          [11, 15],
+          [15, 20]
+        ]
+      },
+      // decrease opacity to transition into the circle layer
+      'heatmap-opacity': {
+        default: 1,
+        stops: [
+          [7, 1],
+          [8, 0]
+        ]
+      },
+    }
+  });
 
   map.addLayer({
     id: 'tweets-point',
@@ -126,20 +130,20 @@ map.on('load', function() {
     }
   });
 
+  // Set a click listener on the points to create a popup when they're clicked
+  // It displays the user's name, Twitter handle, and bio
   map.on('click', 'tweets-point', function(e) {
-  new mapboxgl.Popup()
-    .setLngLat(e.features[0].geometry.coordinates)
-    .setHTML('<b>Name:</b> ' + e.features[0].properties.Name + 
-             ' <i>@' + e.features[0].properties.Handle + '</i> <br>' +
-             '<b>Bio:</b> ' + e.features[0].properties.Bio + '<br>' +
-             '<b>Location:</b> ' + e.features[0].properties.Place)
-    .addTo(map);
+    new mapboxgl.Popup()
+      .setLngLat(e.features[0].geometry.coordinates)
+      .setHTML('<b>Name:</b> ' + e.features[0].properties.Name + 
+              ' <i>@' + e.features[0].properties.Handle + '</i> <br>' +
+              '<b>Bio:</b> ' + e.features[0].properties.Bio + '<br>' +
+              '<b>Location:</b> ' + e.features[0].properties.Place)
+      .addTo(map);
+  });
 });
 
-
-
-});
-
+// Set a hover over the states. Here, the callback gets the number of fatalities per state
 map.on('mousemove', function(e) {
   var states = map.queryRenderedFeatures(e.point, {
     layers: ['us-shootings']
