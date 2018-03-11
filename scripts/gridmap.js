@@ -37,7 +37,7 @@ map.on('load', function() {
   id: 'tweets-heat',
   type: 'heatmap',
   source: 'tweets',
-  maxzoom: 15,
+  // maxzoom: 15,
   paint: {
     // increase weight as diameter breast height increases
     'heatmap-weight': {
@@ -88,7 +88,7 @@ map.on('load', function() {
     id: 'tweets-point',
     type: 'circle',
     source: 'tweets',
-    minzoom: 14,
+    // minzoom: 14,
     paint: {
       // increase the radius of the circle as the zoom level and dbh value increases
       'circle-radius': {
