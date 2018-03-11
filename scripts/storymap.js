@@ -41,7 +41,6 @@ function resize() {
   });
 }
 
-
 mapboxgl.accessToken = KUO_TOKEN;
 // Creates the map with the saved style from Mapbox
 var map = new mapboxgl.Map({
