@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>Shootings Gridmap</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+    <link rel='stylesheet' href='node_modules/mapbox-gl/dist/mapbox-gl.css'>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="styles/gridmap.css">
+
+  </head>
+  <body>
+    <div id='map'></div>
+      <div class='map-overlay' id='features'>
+        <h2>Shooting Information</h2>
+        <div id='pd'>
+        </div>
+      </div>
+      <div class='map-overlay' id='legend'></div>
+
+    <!--jQuery-->
+    <script src='node_modules/jquery/dist/jquery.min.js'></script>
+
+    <!--Mapbox.js-->
+    <script src='node_modules/mapbox-gl/dist/mapbox-gl.js'></script> 
+
+    <!--Bootstrap.js-->
+    <script src='node_modules/bootstrap/dist/js/bootstrap.min.js'></script>
+
+    <!--My script-->
+    <script src='scripts/gridmap.js'></script>
+  </body>
+</html>
