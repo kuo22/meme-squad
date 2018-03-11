@@ -152,17 +152,18 @@ map.on('mousemove', function(e) {
 
 // Array of the color hex values
 var colors = [
+    '#FFF',
     '#ffffcc',
     '#a1dab4',
     '#41b6c4',
     '#2c7fb8',
     '#253494',
+    '#000000',
     '#fed976',
     '#feb24c',
     '#fd8d3c',
     '#f03b20',
     '#bd0026',
-
 ];
 
 // For each color, create a swatch object using a button and then programatically style it
