@@ -1,3 +1,7 @@
+const KUO_TOKEN = 'pk.eyJ1Ijoia3VvMjIiLCJhIjoiY2pkeTY1M3c0MHduejJxbzE3NjZmdzhsNyJ9.UMETNS3SPlCrY2BmmIHQGA';
+
+const YULONG_TOKEN = 'pk.eyJ1IjoieXVsb25ndGFuIiwiYSI6ImNqZTBhdzNyYzBlc20zM3F0aXp1MG43ZnYifQ.AWlxP25BBgwxpt3ar7ojag';
+
 
 window.onresize = function() {
   resize();
@@ -17,6 +21,7 @@ function updateActive() {
   if (id == 'tab1') {
     style = 'basic';
     messageContent = 'Everyone dies from cancer.';
+    map.setStyle('mapbox://styles/kuo22/cjema9eqb47cz2so4mcjn08gr');
   } else if (id == 'tab2') {
     style = 'dark';
     messageContent = 'Everyone dies from bullets.';
@@ -37,13 +42,15 @@ function resize() {
 }
 
 
-mapboxgl.accessToken = 'pk.eyJ1IjoieXVsb25ndGFuIiwiYSI6ImNqZTBhdzNyYzBlc20zM3F0aXp1MG43ZnYifQ.AWlxP25BBgwxpt3ar7ojag';
+mapboxgl.accessToken = KUO_TOKEN;
 // Creates the map with the saved style from Mapbox
 var map = new mapboxgl.Map({
   container: 'map-content',
-  style: 'mapbox://styles/mapbox/basic-v9',
-  center: [-122.420679, 37.772537],
-  zoom: 13,
+  style: 'mapbox://styles/kuo22/cjema9eqb47cz2so4mcjn08gr',
 });
+
+map.queryRenderedFeatures({
+  layers: ['state-2010census-dp1-67sq9v']
+})
 
 
