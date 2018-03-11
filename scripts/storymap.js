@@ -13,14 +13,19 @@ function updateActive() {
 
   var id = $currentItem.attr('id');
   var style = '';
+  var messageContent = '';
   if (id == 'tab1') {
     style = 'basic';
+    messageContent = 'Everyone dies from cancer.';
   } else if (id == 'tab2') {
     style = 'dark';
+    messageContent = 'Everyone dies from bullets.';
   } else {
     style = 'satellite';
+    messageContent = 'Everyone dies from rocket powered pistols.';
   }
-  map.setStyle(`mapbox://styles/mapbox/${style}-v9`)
+  map.setStyle(`mapbox://styles/mapbox/${style}-v9`);
+  $('#story-text').html(messageContent);
 }
 
 function resize() {
@@ -40,6 +45,5 @@ var map = new mapboxgl.Map({
   center: [-122.420679, 37.772537],
   zoom: 13,
 });
-
 
 
