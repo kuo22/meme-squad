@@ -148,3 +148,37 @@ map.on('mousemove', function(e) {
     $('#pd').html('<h3><strong>' + states[0].properties.NAME + '</strong></h3><p><strong><em>' + states[0].properties.total_harm + '</strong> deaths + injuries from shootings in 2018</em></p>');
   }
 });
+
+// Array of the color hex values
+var colors = [
+    '#ffffcc',
+    '#a1dab4',
+    '#41b6c4',
+    '#2c7fb8',
+    '#253494',
+    '#fed976',
+    '#feb24c',
+    '#fd8d3c',
+    '#f03b20',
+    '#bd0026',
+
+];
+
+// For each color, create a swatch object using a button and then programatically style it
+// Sets a click event listener on each swatch
+colors.forEach(function(color) {
+  var swatch = document.createElement('button');
+  swatch.style.backgroundColor = color;
+  swatch.addEventListener('click', function() {
+    var propertyID = 'fill-color';
+    if (layer.value == 'background') {
+      propertyID = 'background-color';
+    } else if (layer.value == 'tweets-point') {
+      propertyID = 'circle-color';
+    } else if (layer.value == 'tweets-heat') {
+      propertyID = 'heatmap-color';
+    }
+    map.setPaintProperty(layer.value, propertyID, color);
+  });
+  swatches.appendChild(swatch);
+});

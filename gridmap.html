@@ -13,14 +13,31 @@
   </head>
   <body>
     <div id='map'></div>
-      <div class='map-overlay' id='features'>
-        <h2>Shooting Information</h2>
-        <div id='pd'>
-        </div>
+    <div class='colors top'>
+      <div class='map-overlay-inner'>
+        <fieldset>
+            <label>Select layer</label>
+            <select id='layer' name='layer'>
+                <option value='water'>Water</option>
+                <option value='background'>Background</option>
+                <option value='tweets-point'>Points</option>
+                <option value='tweets-heat'>Points</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <label>Choose a color</label>
+            <div id='swatches'></div>
+        </fieldset>
       </div>
-      <div class='map-overlay' id='legend'>
-        <div><b>Total Casualties</b></div>
+    </div>
+    <div class='map-overlay' id='features'>
+      <h2>Shooting Information</h2>
+      <div id='pd'>
       </div>
+    </div>
+    <div class='map-overlay' id='legend'>
+      <div><b>Total Casualties</b></div>
+    </div>
 
     <!--jQuery-->
     <script src='node_modules/jquery/dist/jquery.min.js'></script>
