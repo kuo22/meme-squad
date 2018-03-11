@@ -77,8 +77,8 @@ map.on('load', function() {
     'heatmap-opacity': {
       default: 1,
       stops: [
-        [10, 1],
-        [11, 0]
+        [7, 1],
+        [8, 0]
       ]
     },
   }
@@ -118,8 +118,8 @@ map.on('load', function() {
       'circle-stroke-width': 1,
       'circle-opacity': {
         stops: [
-          [20, 0],
-          [21, 1]
+          [7, 0],
+          [8, 1]
         ]
       }
     }
