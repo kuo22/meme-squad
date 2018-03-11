@@ -125,11 +125,11 @@ map.on('load', function() {
     }
   });
 
-  map.on('click', 'tweets-point', function(e) {
+  map.on('mousemove', 'tweets-point', function(e) {
   new mapboxgl.Popup()
     .setLngLat(e.features[0].geometry.coordinates)
     .setHTML('<b>Name:</b> ' + e.features[0].properties.Name + 
-             e.features[0].properties.Handle + '<br>' +
+             '<em>@</em>' + e.features[0].properties.Handle + '<br>' +
              '<b>Bio:</b> ' + e.features[0].properties.Bio + '<br>' +
              '<b>Location:</b> ' + e.features[0].properties.Place)
     .addTo(map);
